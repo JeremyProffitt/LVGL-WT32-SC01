@@ -1,3 +1,21 @@
+# Refactored for WT32-SC01
+
+This is the port of LVGL for the ESP32, with the submodule references removed (files kept) and configuration set for the WT32-SC01 device (see manual in repo).  
+
+These are the submodules removed:
+```
+[submodule "components/lvgl_esp32_drivers"]
+	path = components/lvgl_esp32_drivers
+	url = https://github.com/lvgl/lvgl_esp32_drivers.git
+[submodule "components/lvgl"]
+	path = components/lvgl
+	url = https://github.com/lvgl/lvgl.git
+[submodule "components/lv_examples/lv_examples"]
+	path = components/lv_examples/lv_examples
+	url = https://github.com/littlevgl/lv_examples.git
+	branch = release/v7
+```
+
 # LVGL project for ESP32
 
 This is an ESP32 demo project showcasing LVGL v7 with support for several display controllers and touch controllers.
