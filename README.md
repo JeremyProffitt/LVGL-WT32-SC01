@@ -1,5 +1,3 @@
-I have modified this demo from LVGL so it's configured properly for the WT32-SC01.  I haven't added any additional functionality otherwise, this will run the demo on your device.  It's a great starting position for building your own interactive device.
-
 # LVGL project for ESP32
 
 This is an ESP32 demo project showcasing LVGL v7 with support for several display controllers and touch controllers.
