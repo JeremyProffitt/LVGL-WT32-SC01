@@ -2,23 +2,43 @@
 # Please adjust to your needs (see https://www.gitpod.io/docs/config-gitpod-file)
 # and commit this file to your remote git repository to share the goodness with others.
 
-
-before: |
-  #Install PlatformIO
-  python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
-  export PATH=$PATH:/home/gitpod/.platformio/penv/bin
-  #Install ESP32-IDF
-  apt-get install -y git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
-  mkdir -p ~/esp
-  cd ~/esp
-  git clone --recursive https://github.com/espressif/esp-idf.git
-  cd ~/esp/esp-idf
-  . ./install.sh esp32,esp32s2,esp32s3
-  . ~/esp/esp-idf/export.sh
-  alias build='idf.py build'
-
-
 tasks:
-  - init: cmake .
+  - name: install pio & aws cli
+    init: |
+      echo hello
+      echo hello
+    command: |
+      sudo pip install -U platformio
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      pio run
+      clear
+      
+#  - name: install docker
+#    init: |
+#      apt-get Install -y docker
+#    command: |
+#      echo $DOCKER_TOKEN | docker login -u albertzerok
+  
+#  - name: inStall aws cli
+#    init: |
+#      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#      unzip awscliv2.zip
+#    command: |
+#      ./aws/install
 
-
+#  - name: install ESP32-IDF
+#    init: |
+#      apt-get install -y git wget flex bison gperf python3 python3-pip python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+#      mkdir -p ~/esp
+#      cd ~/esp
+#      git clone --recursive https://github.com/espressif/esp-idf.git
+#      cd ~/esp/esp-idf
+#      . ./install.sh esp32,esp32s2,esp32s3
+#      . ~/esp/esp-idf/export.sh
+#      alias build='idf.py build'
+      
+vscode:
+  extensions:
+    - llvm-vs-code-extensions.vscode-clangd
